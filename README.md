@@ -77,3 +77,12 @@ Install rosserail and arduino
 ```
 sudo apt-get install ros-indigo-rosserial-arduino
 ```
+
+
+TO RUN
+
+```
+roscore
+rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0
+python cmd_robot.py 0 0 0 255
+```

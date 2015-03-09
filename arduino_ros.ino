@@ -1,4 +1,4 @@
-#include <ArduinoHardware.h>
+//#include <ArduinoHardware.h>
 #include <ros.h>
 #include <std_msgs/Int16MultiArray.h>
 #include <std_msgs/String.h>
@@ -7,6 +7,7 @@
 ros::NodeHandle  nh;
 
 std_msgs::String str_msg;
+char msg[64];
 ros::Publisher chatter("chatter", &str_msg);
 
 
@@ -38,14 +39,10 @@ int get_speed( const int input )
 
 void robot_cb(const std_msgs::Int16MultiArray& cmd_msg)
 {
-//  char msg[64];
-//  sprintf(msg,"we are live");
-//  str_msg.data = msg;
-//  chatter.publish( &str_msg );
+  sprintf(msg,"got: %i %i %i %i", cmd_msg.data[0],cmd_msg.data[1],cmd_msg.data[2],cmd_msg.data[3]);
 
-//  sprintf(msg,"got: %i %i %i %i", cmd_msg.data[0],cmd_msg.data[1],cmd_msg.data[2],cmd_msg.data[3]);
-//  str_msg.data = msg;
-//  chatter.publish( &str_msg );
+  str_msg.data = msg;
+  chatter.publish( &str_msg );
   
   motor1.setSpeed(get_speed(cmd_msg.data[0]));
   motor1.run(get_direction(cmd_msg.data[0]));  
@@ -55,6 +52,7 @@ void robot_cb(const std_msgs::Int16MultiArray& cmd_msg)
   motor3.run(get_direction(cmd_msg.data[2]));  
   motor4.setSpeed(get_speed(cmd_msg.data[3]));
   motor4.run(get_direction(cmd_msg.data[3]));    
+  return;
 }
 
 
@@ -65,13 +63,13 @@ void setup(){
   motor2.setSpeed(1000);
   motor3.setSpeed(1000);
   motor4.setSpeed(1000);
-  
+  nh.getHardware()->setBaud(115200); //or what ever baud you want
   nh.initNode();
   nh.subscribe(sub);
   nh.advertise(chatter);
 }
 
 void loop(){
-  nh.spinOnce();
-  delay(1);
+ nh.spinOnce();
+ delay(1);
 }
