@@ -38,19 +38,23 @@ int get_speed( const int input )
 
 void robot_cb(const std_msgs::Int16MultiArray& cmd_msg)
 {
-  char msg[64];
-  sprintf(msg,"got: %i %i %i %i", cmd_msg.data[0],cmd_msg.data[1],cmd_msg.data[2],cmd_msg.data[3]);
-  str_msg.data = msg;
-  chatter.publish( &str_msg );
+//  char msg[64];
+//  sprintf(msg,"we are live");
+//  str_msg.data = msg;
+//  chatter.publish( &str_msg );
 
-  //motor1.setSpeed(get_speed(cmd_msg.data[0]));
-//  motor1.run(get_direction(cmd_msg.data[0]));  
-  //motor2.setSpeed(get_speed(cmd_msg.data[1]));
-//  motor2.run(get_direction(cmd_msg.data[1]));  
-  //motor3.setSpeed(get_speed(cmd_msg.data[2]));
-//  motor3.run(get_direction(cmd_msg.data[2]));  
-  //motor4.setSpeed(get_speed(cmd_msg.data[3]));
-//  motor4.run(get_direction(cmd_msg.data[3]));    
+//  sprintf(msg,"got: %i %i %i %i", cmd_msg.data[0],cmd_msg.data[1],cmd_msg.data[2],cmd_msg.data[3]);
+//  str_msg.data = msg;
+//  chatter.publish( &str_msg );
+  
+  motor1.setSpeed(get_speed(cmd_msg.data[0]));
+  motor1.run(get_direction(cmd_msg.data[0]));  
+  motor2.setSpeed(get_speed(cmd_msg.data[1]));
+  motor2.run(get_direction(cmd_msg.data[1]));  
+  motor3.setSpeed(get_speed(cmd_msg.data[2]));
+  motor3.run(get_direction(cmd_msg.data[2]));  
+  motor4.setSpeed(get_speed(cmd_msg.data[3]));
+  motor4.run(get_direction(cmd_msg.data[3]));    
 }
 
 
