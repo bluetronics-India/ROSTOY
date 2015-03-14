@@ -8,7 +8,7 @@ Resources
 * [Setup ROS workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace)
 * [Motor Shield](http://playground.arduino.cc/MotorControlShieldV3/0)
 * [ROSSerial Python](http://wiki.ros.org/rosserial_python)
-
+* [Joystick](http://wiki.ros.org/joy/Tutorials/ConfiguringALinuxJoystick)
 sudo apt-get install ros-indigo-rosserial-python
 
 ```
