@@ -10,7 +10,12 @@ Resources
 * [ROSSerial Python](http://wiki.ros.org/rosserial_python)
 * [Joystick](http://wiki.ros.org/joy/Tutorials/ConfiguringALinuxJoystick)
 sudo apt-get install ros-indigo-rosserial-python
-
+* [Kinect calibration](http://wiki.ros.org/openni_launch/Tutorials/IntrinsicCalibration)
+* sudo apt-get install ros-indigo-usb-cam
+* uvcvideo
+* v412-ctl
+* rosrun camera_calibration cameracalibrator.py image:=/usb_cam/image_raw camera:=/usb_cam --size 5x7 --square 0.03425
+* sudo aptitude install ros-indigo-ar-track-alvar
 ```
 kscottz@kscottz-thinkpad:~/Code$ mkdir toy_ws
 kscottz@kscottz-thinkpad:~/Code$ source /opt/ros/indigo/setup.bash 
